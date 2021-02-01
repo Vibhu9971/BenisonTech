@@ -11,6 +11,7 @@ class Logs(generics.ListCreateAPIView):
     serializer_class = LogSerializer
 
     def perform_create(self, serializer):
+        serializer.save()
         device_details = serializer.data
         threshold = 400
         alarm = 0
@@ -28,8 +29,7 @@ class Logs(generics.ListCreateAPIView):
             server.ehlo()
             server.starttls()
             server.ehlo()
-            server.login("vibhutr1993@gmail.com", "")
-
+            server.login("vibhutr1993@gmail.com", "tebfbdflqumgqexs")
             msg = f"Subject: {subject}\n\n{body}"
             server.sendmail("vibhutr1993@gmail.com", "vibhu.yash82@gmail.com", msg)
             server.quit()
